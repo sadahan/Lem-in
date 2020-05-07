@@ -38,27 +38,27 @@ do
 			exit
 			;;
 		1) 
-			./generator --flow-one > test.txt && ./lem-in test.txt | wc -l > var.txt
+			./generator --flow-one > test.txt && ./lem-in < test.txt | wc -l > var.txt
 			read ret < var.txt
 			map="flow-one"
 			;;
 		2) 
-			./generator --flow-ten > test.txt && ./lem-in test.txt | wc -l > var.txt
+			./generator --flow-ten > test.txt && ./lem-in < test.txt | wc -l > var.txt
 			read ret < var.txt
 			map="flow-ten"
 			;;
 		3) 
-			./generator --flow-thousand > test.txt && ./lem-in test.txt | wc -l > var.txt
+			./generator --flow-thousand > test.txt && ./lem-in < test.txt | wc -l > var.txt
 			read ret < var.txt
 			map="flow-thousand"
 			;;
 		4) 
-			./generator --big > test.txt && ./lem-in test.txt | wc -l > var.txt
+			./generator --big > test.txt && ./lem-in < test.txt | wc -l > var.txt
 			read ret < var.txt
 			map="big"
 			;;
 		5) 
-			./generator --big-superposition > test.txt && ./lem-in test.txt | wc -l > var.txt
+			./generator --big-superposition > test.txt && ./lem-in < test.txt | wc -l > var.txt
 			read ret < var.txt
 			map="big-superposition"
 			;;
