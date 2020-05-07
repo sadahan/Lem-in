@@ -73,6 +73,12 @@ t_path			*find_best_routes(t_anthill *anthill, t_path *routes, int fd)
 	routes = get_dijkstra_routes(anthill, routes);
 	lines = routes == NULL ? 0 : nb_lines(routes);
 	print_routes_log(fd, routes, lines, "Djikstra :\n");
+	if (routes->size == 0)
+	{
+		write(2, "ERROR\n", 7);
+		free_path(routes);
+		return (NULL);
+	}
 	routes = get_ek1_routes(anthill, routes, lines, fd);
 	lines = routes == NULL ? 0 : nb_lines(routes);
 	routes = get_ek2_routes(anthill, routes, lines, fd);

@@ -25,6 +25,11 @@ t_path		*reverse_paths(t_path *path)
 	int		i;
 	int		j;
 
+	if (path->path_length[0] == 0)
+	{
+		free_path(path);
+		return (NULL);
+	}
 	if (!(rpath = create_path_tab(path->size)))
 		exit(-2);
 	rpath->size = path->size;

@@ -25,6 +25,7 @@ t_path			*create_path_tab(int size)
 		exit_malloc(-2);
 	if (!(ret->path_length = (int *)malloc(sizeof(int) * size)))
 		exit_malloc(-2);
+	ret->path_length[0] = 0;
 	if (!(ret->nb_ants = (int *)malloc(sizeof(int) * size)))
 		exit_malloc(-2);
 	while (++i < size)
