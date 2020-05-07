@@ -1,0 +1,27 @@
+Simplified representation of anthill (connector nodes)
+[1;34mApp9[0m : Ixo5 Ij_8
+[1;35mJdd0[0m : Foc1 Tkc4 Esn8
+[1;35mEsn8[0m : Als3 Jdd0 Oi_5
+[1;34mOi_5[0m : Etm3 Esn8
+[1;34mQko2[0m : Tkc4 Als3
+[1;34mDtc1[0m : Der3 Hcc5
+[1;34mVyp4[0m : Pdl0 Ixo5
+[1;34mDer3[0m : Foc1 Dtc1
+[1;34mAls3[0m : Qko2 Esn8
+[1;34mTkc4[0m : Jdd0 Qko2
+[1;34mHcc5[0m : Dtc1 Wrt2
+[1;34mIxo5[0m : App9 Vyp4
+[1;34mPdl0[0m : Qny0 Vyp4
+[1;34mIj_8[0m : App9 Wrt2
+[1;34mFoc1[0m : Jdd0 Der3
+[1;34mWrt2[0m : Ij_8 Hcc5
+[1;34mQny0[0m : Etm3 Pdl0
+[1;34mEtm3[0m : Qny0 Oi_5
+
+
+[1;32mDjikstra :
+[0mStart and end connected, all ants can travel in one step
+[1;32mEdmond Karps :
+[0mStart and end connected, all ants can travel in one step
+[1;32mEdmond Karps with intermediary nodes :
+[0mStart and end connected, all ants can travel in one step
