@@ -47,6 +47,8 @@ static t_anthill	*parse_anthill(char *graph, t_data *data,
 	if (!(anthill = parser(graph, anthill, data)))
 	{
 		write(2, "ERROR\n", 6);
+		ft_strdel(&graph);
+		free_data(data);
 		return (NULL);
 	}
 	if (!(anthill = create_connector_graph(anthill)))

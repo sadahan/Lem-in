@@ -23,11 +23,14 @@ int				next_line(char *str, int i)
 
 static void		fill_anthill_int(t_anthill *anthill, t_data *data)
 {
-	anthill->start = search_in_table(data->start_room,
-		anthill->rooms, anthill->nb_room);
-	anthill->end = search_in_table(data->end_room, anthill->rooms,
-		anthill->nb_room);
-	anthill->ants = data->ants;
+	if (anthill)
+	{
+		anthill->start = search_in_table(data->start_room,
+			anthill->rooms, anthill->nb_room);
+		anthill->end = search_in_table(data->end_room, anthill->rooms,
+			anthill->nb_room);
+		anthill->ants = data->ants;
+	}
 }
 
 t_anthill		*parser(char *str, t_anthill *anth, t_data *data)

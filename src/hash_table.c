@@ -71,9 +71,6 @@ int				search_in_table(char *str, char **tab, int size)
 		i++;
 	}
 	if (i == size)
-	{
-		write(2, "ERROR\n", 7);
-		exit(-1);
-	}
+		return (-1);
 	return (hash);
 }

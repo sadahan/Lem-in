@@ -12,9 +12,20 @@
 
 #include "../lem_in.h"
 
-static void		init_inter_nodes(t_anthill *anthill)
+static t_anthill	*free_return(t_anthill *anthill, t_dstring *word, int i)
 {
-	int			i;
+	delete_dstring(word);
+	if (i == 1)
+	{
+		delete_anthill(anthill, -1);
+		return (NULL);
+	}
+	return (anthill);
+}
+
+static void			init_inter_nodes(t_anthill *anthill)
+{
+	int				i;
 
 	i = -1;
 	while (++i < anthill->nb_room)
@@ -26,7 +37,7 @@ static void		init_inter_nodes(t_anthill *anthill)
 	}
 }
 
-static void		fill_nodes(t_anthill *anthill, int node, int connecting)
+static void			fill_nodes(t_anthill *anthill, int node, int connecting)
 {
 	anthill->nodes[node] = push_int(anthill->nodes[node], connecting);
 	anthill->nodes[connecting] = push_int(anthill->nodes[connecting], node);
@@ -40,10 +51,10 @@ static void		fill_nodes(t_anthill *anthill, int node, int connecting)
 		push_int(anthill->inter_nodes[connecting + anthill->nb_room], node);
 }
 
-static int		define_node(t_anthill *anthill, t_dstring *word, char *str,
-					int n)
+static int			define_node(t_anthill *anthill, t_dstring *word,
+						char *str, int n)
 {
-	int			node;
+	int				node;
 
 	word->size = 0;
 	word = push_str_nchar(word, str, n);
@@ -51,12 +62,12 @@ static int		define_node(t_anthill *anthill, t_dstring *word, char *str,
 	return (node);
 }
 
-t_anthill		*handle_tubes(t_anthill *anthill, char *str, int i,
-					t_dstring *word)
+t_anthill			*handle_tubes(t_anthill *anthill, char *str, int i,
+						t_dstring *word)
 {
-	int			j;
-	int			node;
-	int			connecting;
+	int				j;
+	int				node;
+	int				connecting;
 
 	init_inter_nodes(anthill);
 	while (str[i])
@@ -69,14 +80,14 @@ t_anthill		*handle_tubes(t_anthill *anthill, char *str, int i,
 		while (str[j] != '-')
 			j++;
 		node = define_node(anthill, word, str + i, j - i);
-		j++;
-		i = j;
+		i = ++j;
 		while (str[j] != '\n' && str[j])
 			j++;
 		connecting = define_node(anthill, word, str + i, j - i);
+		if (node == -1 || connecting == -1)
+			return (free_return(anthill, word, 1));
 		fill_nodes(anthill, node, connecting);
 		i = next_line(str, i);
 	}
-	delete_dstring(word);
-	return (anthill);
+	return (free_return(anthill, word, 0));
 }
