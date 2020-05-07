@@ -79,7 +79,8 @@ t_path			*find_best_routes(t_anthill *anthill, t_path *routes, int fd)
 	if (routes->size == 0)
 	{
 		write(2, "ERROR\n", 7);
-		exit(-1);
+		free_path(routes);
+		return (NULL);
 	}
 	return (routes);
 }

@@ -67,7 +67,7 @@ int				check_file(char *file, t_data *data)
 	return (check_return(i, data));
 }
 
-t_dstring		*read_file()
+t_dstring		*read_file(void)
 {
 	int			ret;
 	char		buff[4096];

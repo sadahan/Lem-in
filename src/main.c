@@ -60,8 +60,11 @@ static t_anthill	*parse_anthill(char *graph, t_data *data,
 static void			print_clean(char *graph, t_anthill *anthill,
 					t_path *routes, t_data *data)
 {
-	ft_putendl(graph);
-	print_ants(anthill, routes);
+	if (routes)
+	{
+		ft_putendl(graph);
+		print_ants(anthill, routes);
+	}
 	delete_anthill(anthill, -1);
 	free_path(routes);
 	free_data(data);
