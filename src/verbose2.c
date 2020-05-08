@@ -43,3 +43,17 @@ void			print_routes_log(int fd, t_path *routes, int lines, char *str)
 		ft_strdel(&tmp);
 	}
 }
+
+int				check_rand(char *file)
+{
+	int			i;
+
+	i = 0;
+	while (i < 10)
+	{
+		if (!ft_isascii(file[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}

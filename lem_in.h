@@ -201,4 +201,6 @@ void				free_matrice(int **mat, int size);
 int					ret_free_line(char *str);
 void				exit_malloc(int error);
 int					ret_free_q(int ret, t_pile *q);
+
+int					check_rand(char *file);
 #endif

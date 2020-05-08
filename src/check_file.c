@@ -69,7 +69,7 @@ int				check_file(char *file, t_data *data)
 
 t_dstring		*read_file(void)
 {
-	int			ret;
+	ssize_t		ret;
 	char		buff[4096];
 	t_dstring	*file;
 
@@ -85,6 +85,8 @@ t_dstring		*read_file(void)
 			return (delete_dstring(file));
 		if (!(file = push_str(file, buff)))
 			exit_malloc(-2);
+		if (!(check_rand(file->str)))
+			return (delete_dstring(file));
 	}
 	if (!file->str)
 		return (delete_dstring(file));
