@@ -88,8 +88,7 @@ int				fix_comments(char *file, int i)
 			return (0);
 		if (!ft_strcmp(comment, "##start") || !ft_strcmp(comment, "##end"))
 			return (ret_free_line(comment));
-	}
-	if (comment)
 		ft_strdel(&comment);
+	}
 	return (i);
 }
