@@ -64,3 +64,17 @@ void			print_anthill_log(int fd, t_anthill *anthill)
 	}
 	fd_putstr("\n\n", fd);
 }
+
+int				check_rand(char *file)
+{
+	int			i;
+
+	i = 0;
+	while (i < 10)
+	{
+		if (!ft_isascii(file[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}

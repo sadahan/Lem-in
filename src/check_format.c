@@ -43,22 +43,21 @@ int				check_command(t_data *data, char *file, int i)
 
 	while (file[i] && file[i] != '\n')
 		i++;
-	j = i;
-	while (file[j] && file[j + 1] != ' ')
-		j++;
 	if (!(cmd = ft_strsub(file, 0, i)))
 		return (0);
 	if (!ft_strcmp(cmd, "##start"))
 	{
-		data->start++;
-		if (!(data->start_room = ft_strsub(file, i + 1, j - i)))
+		j = cmd_start(data, &file[i], 0);
+		if (j == -1)
 			return (ret_free_line(cmd));
+		i += j;
 	}
 	else if (!ft_strcmp(cmd, "##end"))
 	{
-		data->end++;
-		if (!(data->end_room = ft_strsub(file, i + 1, j - i)))
+		j = cmd_end(data, &file[i], 0);
+		if (j == -1)
 			return (ret_free_line(cmd));
+		i += j;
 	}
 	ft_strdel(&cmd);
 	return ((data->start > 1 || data->end > 1) ? 0 : i);

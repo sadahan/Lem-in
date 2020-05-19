@@ -203,4 +203,7 @@ void				exit_malloc(int error);
 int					ret_free_q(int ret, t_pile *q);
 
 int					check_rand(char *file);
+int					fix_comments(char *file, int i);
+int					cmd_start(t_data *data, char *file, int i);
+int					cmd_end(t_data *data, char *file, int i);
 #endif

@@ -44,16 +44,52 @@ void			print_routes_log(int fd, t_path *routes, int lines, char *str)
 	}
 }
 
-int				check_rand(char *file)
+int				cmd_start(t_data *data, char *file, int i)
 {
-	int			i;
+	int			j;
 
-	i = 0;
-	while (i < 10)
+	data->start++;
+	i += fix_comments(&file[i], 0);
+	j = i;
+	while (file[j] && file[j + 1] != ' ')
+		j++;
+	if (!(data->start_room = ft_strsub(file, i + 1, j - i)))
+		return (-1);
+	return (i);
+}
+
+int				cmd_end(t_data *data, char *file, int i)
+{
+	int			j;
+
+	data->end++;
+	i += fix_comments(&file[i], 0);
+	j = i;
+	while (file[j] && file[j + 1] != ' ')
+		j++;
+	if (!(data->end_room = ft_strsub(file, i + 1, j - i)))
+		return (-1);
+	return (i);
+}
+
+int				fix_comments(char *file, int i)
+{
+	int			j;
+	char		*comment;
+
+	comment = NULL;
+	while (file[i + 1] && file[i + 1] == '#')
 	{
-		if (!ft_isascii(file[i]))
-			return (0);
+		j = i;
 		i++;
+		while (file[i] && file[i] != '\n')
+			i++;
+		if (!(comment = ft_strsub(file, j + 1, i - j - 1)))
+			return (0);
+		if (!ft_strcmp(comment, "##start") || !ft_strcmp(comment, "##end"))
+			return (ret_free_line(comment));
 	}
-	return (1);
+	if (comment)
+		ft_strdel(&comment);
+	return (i);
 }
