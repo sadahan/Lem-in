@@ -14,7 +14,8 @@
 
 static void		fd_putstr(int fd, char *str)
 {
-	write(fd, str, ft_strlen(str));
+	if (str)
+		write(fd, str, ft_strlen(str));
 }
 
 void			print_routes_log(int fd, t_path *routes, int lines, char *str)
@@ -85,9 +86,12 @@ int				fix_comments(char *file, int i)
 		while (file[i] && file[i] != '\n')
 			i++;
 		if (!(comment = ft_strsub(file, j + 1, i - j - 1)))
-			return (0);
+			return (0); //exit ?
 		if (!ft_strcmp(comment, "##start") || !ft_strcmp(comment, "##end"))
-			return (ret_free_line(comment));
+		{
+			ft_strdel(&comment);
+			return (-1);
+		}
 		ft_strdel(&comment);
 	}
 	return (i);
