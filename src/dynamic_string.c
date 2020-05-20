@@ -19,12 +19,15 @@ t_dstring			*create_dstring(unsigned int cap, char *str)
 
 	if (!(ret = (t_dstring *)malloc(sizeof(t_dstring))))
 		exit_malloc(-2);
-	len = ft_strlen(str);
+	if (str)
+		len = ft_strlen(str);
+	else
+		len = 0;
 	ret->capacity = cap;
 	ret->size = len;
 	if (!(ret->str = ft_strnew(ret->capacity)))
 		exit_malloc(-2);
-	if (str[0] != '\0')
+	if (str && str[0])
 		ft_strcpy(ret->str, str);
 	return (ret);
 }
@@ -43,6 +46,8 @@ t_dstring			*push_str(t_dstring *dest, char *src)
 	int				new_cap;
 	unsigned int	len;
 
+	if (!src || !src[0])
+		return (dest);
 	len = ft_strlen(src);
 	temp = dest;
 	if (len < temp->capacity - temp->size)
@@ -68,6 +73,8 @@ t_dstring			*push_str_nchar(t_dstring *dest, char *src, int n)
 	int				new_cap;
 	unsigned int	len;
 
+	if (!src || !src[0])
+		return (dest);
 	len = n + 1;
 	temp = dest;
 	if (len < temp->capacity)

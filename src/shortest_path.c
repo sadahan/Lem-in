@@ -104,7 +104,7 @@ t_path			*next_shortest_path(t_anthill *ant)
 	t_path			*routes;
 
 	if (!(tab = (t_dijkstra *)malloc(sizeof(t_dijkstra) * ant->nb_room * 2)))
-		return (NULL);
+		exit_malloc(-2);
 	tab = init_dijkstra_tab(tab, ant);
 	if (!(routes = create_path_tab(ant->connectors[ant->start]->size * 2)))
 		exit_malloc(-2);
