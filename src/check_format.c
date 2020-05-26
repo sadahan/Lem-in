@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 16:29:45 by sadahan           #+#    #+#             */
-/*   Updated: 2020/05/25 17:19:37 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/05/26 19:01:25 by sadahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int				check_ant_number(char *file, t_data *data)
 {
 	int			i;
 	long int	ants;
+	int			zero;
 
+	zero = 0;
 	i = 0;
 	ants = 0;
 	while (file[i] && file[i] != '\n')
@@ -25,9 +27,13 @@ int				check_ant_number(char *file, t_data *data)
 		if (!ft_isdigit(file[i]))
 			return (0);
 		while (ft_isdigit(file[i]))
+		{
+			if (file[i] == '0')
+				zero++;
 			i++;
+		}
 	}
-	if (i > 10)
+	if ((i - zero) > 10)
 		return (0);
 	ants = ft_atoi(file);
 	if (ants == 0 || ants > 200000)
