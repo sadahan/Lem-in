@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verbose2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbretagn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:38:10 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/03/12 19:25:08 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/05/26 14:53:52 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int				fix_comments(char *file, int i)
 		while (file[i] && file[i] != '\n')
 			i++;
 		if (!(comment = ft_strsub(file, j + 1, i - j - 1)))
-			return (0); //exit ?
+			return (0);
 		if (!ft_strcmp(comment, "##start") || !ft_strcmp(comment, "##end"))
 		{
 			ft_strdel(&comment);

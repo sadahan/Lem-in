@@ -6,7 +6,7 @@
 /*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 15:45:27 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/05/26 13:22:42 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/05/26 14:25:47 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int					check_first_read(char *buffer, int ret)
 
 int					check_read_buff(char *line, int *format)
 {
-	int		ret;
 	char	buffer[4096];
 
 	ft_strcpy(buffer, line);
