@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:57:05 by sadahan           #+#    #+#             */
-/*   Updated: 2020/03/12 18:40:07 by sadahan          ###   ########.fr       */
+/*   Updated: 2020/05/26 12:09:12 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,19 @@ int				check_file(char *file, t_data *data)
 	return (check_return(i, data));
 }
 
+#include <stdio.h> //remove
+
 t_dstring		*read_file(void)
 {
 	ssize_t		ret;
 	char		buff[4096];
 	t_dstring	*file;
+	int			format;
+	int			direct_read;
 
 	file = NULL;
+	format = 0;
+	direct_read = -1;
 	if (!(file = create_dstring(4096, "")))
 		exit_malloc(-2);
 	while ((ret = read(0, buff, 4095)))
@@ -81,12 +87,9 @@ t_dstring		*read_file(void)
 		if (ret == -1)
 			return (delete_dstring(file));
 		buff[ret] = '\0';
-		if (buff[0] == '\0')
-			return (delete_dstring(file));
-		if (!(file = push_str(file, buff)))
-			exit_malloc(-2);
-		if (!(check_rand(file->str)))
-			return (delete_dstring(file));
+		file = check_error(&direct_read, buff, ret, file);
+		if (direct_read == 1 && !check_read_buff(buff, &format))
+				break ;
 	}
 	if (!file->str)
 		return (delete_dstring(file));

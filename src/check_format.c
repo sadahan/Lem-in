@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 16:29:45 by sadahan           #+#    #+#             */
-/*   Updated: 2020/03/12 17:50:32 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/05/25 17:19:37 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int				check_command(t_data *data, char *file, int i)
 	return ((data->start > 1 || data->end > 1) ? 0 : i);
 }
 
-static int		is_room(char *line)
+int				is_room(char *line)
 {
 	int			i;
 	int			space;
@@ -91,7 +91,7 @@ static int		is_room(char *line)
 	return (1);
 }
 
-static int		is_tube(char *line)
+int				is_tube(char *line)
 {
 	int			i;
 	int			dash;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in_checker.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:03:44 by sadahan           #+#    #+#             */
-/*   Updated: 2020/03/12 16:21:33 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/05/26 12:09:33 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,10 @@ int					check_ant_number(char *file, t_data *data);
 int					check_command(t_data *data, char *file, int i);
 int					check_tubes_rooms(t_data *data, char *file);
 int					check_file(char *file, t_data *data);
+int					is_room(char *line);
+int					is_tube(char *line);
+int         		check_read_buff(char *buffer, int *format);
+int         		check_first_read(char *buffer, int ret);
+t_dstring           *check_error(int *direct_read, char *buff, int ret, t_dstring *file);
 t_dstring			*read_file();
 #endif
