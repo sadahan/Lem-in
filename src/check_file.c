@@ -6,7 +6,7 @@
 /*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:57:05 by sadahan           #+#    #+#             */
-/*   Updated: 2020/05/26 12:09:12 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/05/26 13:23:10 by cbretagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ int				check_file(char *file, t_data *data)
 	return (check_return(i, data));
 }
 
-#include <stdio.h> //remove
-
 t_dstring		*read_file(void)
 {
 	ssize_t		ret;
@@ -89,7 +87,7 @@ t_dstring		*read_file(void)
 		buff[ret] = '\0';
 		file = check_error(&direct_read, buff, ret, file);
 		if (direct_read == 1 && !check_read_buff(buff, &format))
-				break ;
+			break ;
 	}
 	if (!file->str)
 		return (delete_dstring(file));
