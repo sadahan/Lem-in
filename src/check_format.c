@@ -30,7 +30,7 @@ int				check_ant_number(char *file, t_data *data)
 	if (i > 10)
 		return (0);
 	ants = ft_atoi(file);
-	if (ants == 0 || ants > 2147483647)
+	if (ants == 0 || ants > 200000)
 		return (0);
 	data->ants = (int)ants;
 	return (i);
