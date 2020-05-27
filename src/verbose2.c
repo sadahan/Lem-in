@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verbose2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbretagn <cbretagn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sadahan <sadahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:38:10 by cbretagn          #+#    #+#             */
-/*   Updated: 2020/05/26 14:53:52 by cbretagn         ###   ########.fr       */
+/*   Updated: 2020/05/27 11:08:18 by sadahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int				cmd_start(t_data *data, char *file, int i)
 	int			j;
 
 	data->start++;
+	if (data->start > 1)
+		return (-1);
 	i += fix_comments(&file[i], 0);
 	j = i;
 	while (file[j] && file[j + 1] != ' ')
@@ -64,6 +66,8 @@ int				cmd_end(t_data *data, char *file, int i)
 	int			j;
 
 	data->end++;
+	if (data->end > 1)
+		return (-1);
 	i += fix_comments(&file[i], 0);
 	j = i;
 	while (file[j] && file[j + 1] != ' ')
